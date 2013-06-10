@@ -1,0 +1,11 @@
+[{
+		"keys": ["ctrl+alt+f"],
+		"command": "jsbeautify",
+		"context": [{
+				"key": "selector",
+				"operator": "equal",
+				"operand": "source.js,source.json"
+			}
+		]
+	}
+]
