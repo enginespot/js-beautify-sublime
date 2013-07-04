@@ -40,7 +40,7 @@ s = None
 
 def plugin_loaded():
 	global s
-	s = sublime.load_settings("JsBeautify.sublime-settings")
+	s = sublime.load_settings("Javascript Beautify.sublime-settings")
 
 if is_py2k:
 	plugin_loaded()
@@ -67,7 +67,7 @@ class PreSaveFormatListner(sublime_plugin.EventListener):
 			view.run_command("jsbeautify")
 
 
-class JsbeautifyCommand(sublime_plugin.TextCommand):
+class jsbeautifyCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		settings = self.view.settings()
 		opts = jsbeautifier.default_options()

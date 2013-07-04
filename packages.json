@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2",
   "packages": [{
-    "name": "JS Beautify",
-    "description": "JS Beautify Wrapper for Sublime Text",
+    "name": "Javascript Beautify",
+    "description": "Javascript Beautify Wrapper for Sublime Text",
     "author": "enginespot",
     "homepage": "https://github.com/enginespot/js-beautify-sublime",
     "last_modified": "2013-06-11 01:29:00",

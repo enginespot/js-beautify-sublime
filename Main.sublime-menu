@@ -7,17 +7,17 @@
                 "mnemonic": "P",
                 "id": "package-settings",
                 "children": [{
-                        "caption": "Js Beautify",
+                        "caption": "Javascript Beautify",
                         "children": [{
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/Javascript Beautify/JsBeautify.sublime-settings"
+                                    "file": "${packages}/Javascript Beautify/Javascript Beautify.sublime-settings"
                                 },
                                 "caption": "Settings – Default"
                             }, {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/User/JsBeautify.sublime-settings"
+                                    "file": "${packages}/User/Javascript Beautify.sublime-settings"
                                 },
                                 "caption": "Settings – User"
                             }, {

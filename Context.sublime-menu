@@ -1,6 +1,6 @@
 [{
 		"id": "jsbeautify",
 		"command": "jsbeautify",
-		"caption": "Js Beautify"
+		"caption": "Javascript Beautify"
 	}
 ]
