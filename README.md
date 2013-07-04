@@ -1,6 +1,12 @@
 # JS Beautify Wrapper for Sublime Text
 
-JS Beautify sublime default settings (the same as js-beautify settings),omly add 
+useage:
+1. install javascript beautify from package manager
+2.cd .config/sublime-text-2/Packages/Javascript Beautify/libs
+  git clone https://github.com/einars/js-beautify.git 
+
+
+JS Beautify sublime default settings (the same as js-beautify settings),only add 
 // jsbeautify options
   "format_on_save": true
 
