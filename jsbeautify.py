@@ -40,7 +40,7 @@ s = None
 
 def plugin_loaded():
 	global s
-	s = sublime.load_settings("Javascript Beautify.sublime-settings")
+	s = sublime.load_settings("JavascriptBeautify.sublime-settings")
 
 if is_py2k:
 	plugin_loaded()
