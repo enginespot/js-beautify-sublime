@@ -11,7 +11,7 @@
             "children": [{
                 "command": "open_file",
                 "args": {
-                    "file": "${packages}/Javascript Beautify/Javascript Beautify.sublime-settings"
+                    "file": "${packages}/Javascript Beautify/JavascriptBeautify.sublime-settings"
                 },
                 "caption": "Settings – Default"
             }, {
