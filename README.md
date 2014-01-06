@@ -2,13 +2,11 @@
 
 ##Installation
 
-1. Install 'Javascript Beautify' from Sublime's package manager.
+1.Just 'Javascript Beautify' from Sublime's package manager.
 
-2. Install the js-beautify python lib.
-```sh
-cd ~/.config/sublime-text-2/Packages/Javascript\ Beautify/libs
-git clone https://github.com/einars/js-beautify.git 
-```
+
+##Comment
+1.current support embed js within jade file
 
 
 ## Settings
