@@ -84,9 +84,13 @@ class jsbeautifyCommand(sublime_plugin.TextCommand):
   def run(self, edit):
     settings = self.view.settings()
     opts = jsbeautifier.default_options()
-    for (k,v) in  opts.__dict__.items(): 
+    for (k,v) in  opts.__dict__.items():
       if s.has(k):
         setattr(opts,k,s.get(k))
+    # try to make it useful without any settings per project
+    if s.get('use_original_indentation',False):
+      setattr(opts,'indent_with_tabs',not settings.get('translate_tabs_to_spaces'))
+      setattr(opts,'indent_size',int(settings.get('tab_size', 8)))
     selection = self.view.sel()[0]
     formatSelection = False
     # formatting a selection/highlighted area
