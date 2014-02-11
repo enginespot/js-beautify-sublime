@@ -16,5 +16,6 @@
   "wrap_line_length": 0,
 
   // jsbeautify options
-  "format_on_save": true
+  "format_on_save": true,
+  "use_original_indentation": false
 }
