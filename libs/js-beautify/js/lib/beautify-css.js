@@ -31,7 +31,7 @@
 
     Written by Harutyun Amirjanyan, (amirjanyan@gmail.com)
 
-    Based on code initially developed by: Einar Lielmanis, <elfz@laacz.lv>
+    Based on code initially developed by: Einar Lielmanis, <einar@jsbeautifier.org>
         http://jsbeautifier.org/
 
     Usage:
@@ -63,11 +63,8 @@
         options = options || {};
         var indentSize = options.indent_size || 4;
         var indentCharacter = options.indent_char || ' ';
-        var selectorSeparatorNewline = true;
-        if (options.selector_separator_newline !== undefined) {
-            selectorSeparatorNewline = options.selector_separator_newline;
-        }
-        var endWithNewline = options.end_with_newline || false;
+        var selectorSeparatorNewline = (options.selector_separator_newline === undefined) ? true : options.selector_separator_newline;
+        var endWithNewline = (options.end_with_newline === undefined) ? false : options.end_with_newline;
 
         // compatibility
         if (typeof indentSize === "string") {
@@ -362,10 +359,10 @@
     };
 
     /*global define */
-    if (typeof define === "function") {
-        // Add support for require.js
-        define(function (require, exports, module) {
-            exports.css_beautify = css_beautify;
+    if (typeof define === "function" && define.amd) {
+        // Add support for AMD ( https://github.com/amdjs/amdjs-api/wiki/AMD#defineamd-property- )
+        define([], function () {
+            return { css_beautify: css_beautify };
         });
     } else if (typeof exports !== "undefined") {
         // Add support for CommonJS. Just put this file somewhere on your require.paths
