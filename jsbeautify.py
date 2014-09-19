@@ -70,8 +70,14 @@ def is_js_buffer(view):
     ext = os.path.splitext(fName)[1][1:]
   if(syntaxPath != None):
     syntax = os.path.splitext(syntaxPath)[0].split('/')[-1].lower()
-
-  return ext in ['js', 'json'] or "javascript" in syntax or "json" in syntax
+  # get a set of extensions to exclude
+  excludes = set(s.get('excludes', []))
+  # get a list of extensions to include
+  includes = set(s.get('includes', ['js', 'json']))
+  # create a list of valid extensions, inclusions minus the exclusions
+  valid = includes - excludes
+  # is our extension valid?
+  return ext in valid
 
 class PreSaveFormatListner(sublime_plugin.EventListener):
   """Event listener to run JsBeautify during the presave event"""
