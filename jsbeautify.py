@@ -66,6 +66,12 @@ def is_js_buffer(view):
   syntax = ""
   ext = ""
 
+  region = sublime.Region(0, view.size())
+  code = view.substr(region)
+  header="#!/usr/bin/env node"
+  print "hello"
+  if header in code.split('\n')[0]:
+    return True
   if (fName != None): # file exists, pull syntax type from extension
     ext = os.path.splitext(fName)[1][1:]
   if(syntaxPath != None):
