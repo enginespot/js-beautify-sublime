@@ -1,3 +1,4 @@
+from __future__ import print_function
 import sublime, sublime_plugin, re, sys, os
 
 directory = os.path.dirname(os.path.realpath(__file__))
