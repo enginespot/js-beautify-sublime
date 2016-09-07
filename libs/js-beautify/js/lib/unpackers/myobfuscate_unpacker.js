@@ -27,7 +27,7 @@
 //
 
 var MyObfuscate = {
-    detect: function (str) {
+    detect: function(str) {
         if (/^var _?[0O1lI]{3}\=('|\[).*\)\)\);/.test(str)) {
             return true;
         }
@@ -37,41 +37,50 @@ var MyObfuscate = {
         return false;
     },
 
-    unpack: function (str) {
+    unpack: function(str) {
         if (MyObfuscate.detect(str)) {
-            var modified_source = str.replace(';eval(', ';unpacked_source = (');
-            var unpacked_source = '';
-            eval(modified_source);
-            if (unpacked_source) {
-                if (MyObfuscate.starts_with(unpacked_source, 'var _escape')) {
-                    // fetch the urlencoded stuff from the script,
-                    var matches = /'([^']*)'/.exec(unpacked_source);
-                    var unescaped = unescape(matches[1]);
-                    if (MyObfuscate.starts_with(unescaped, '<script>')) {
-                        unescaped = unescaped.substr(8, unescaped.length - 8);
+            var __eval = eval;
+            try {
+                eval = function(unpacked) { // jshint ignore:line
+                    if (MyObfuscate.starts_with(unpacked, 'var _escape')) {
+                        // fetch the urlencoded stuff from the script,
+                        var matches = /'([^']*)'/.exec(unpacked);
+                        var unescaped = unescape(matches[1]);
+                        if (MyObfuscate.starts_with(unescaped, '<script>')) {
+                            unescaped = unescaped.substr(8, unescaped.length - 8);
+                        }
+                        if (MyObfuscate.ends_with(unescaped, '</script>')) {
+                            unescaped = unescaped.substr(0, unescaped.length - 9);
+                        }
+                        unpacked = unescaped;
                     }
-                    if (MyObfuscate.ends_with(unescaped, '</script>')) {
-                        unescaped = unescaped.substr(0, unescaped.length - 9);
-                    }
-                    unpacked_source = unescaped;
+                    // throw to terminate the script
+                    unpacked = "// Unpacker warning: be careful when using myobfuscate.com for your projects:\n" +
+                        "// scripts obfuscated by the free online version may call back home.\n" +
+                        "\n//\n" + unpacked;
+                    throw unpacked;
+                }; // jshint ignore:line
+                __eval(str); // should throw
+            } catch (e) {
+                // well, it failed. we'll just return the original, instead of crashing on user.
+                if (typeof e === "string") {
+                    str = e;
                 }
             }
-            return unpacked_source ? "// Unpacker warning: be careful when using myobfuscate.com for your projects:\n" +
-                    "// scripts obfuscated by the free online version may call back home.\n" +
-                    "\n//\n" + unpacked_source : str;
+            eval = __eval; // jshint ignore:line
         }
         return str;
     },
 
-    starts_with: function (str, what) {
+    starts_with: function(str, what) {
         return str.substr(0, what.length) === what;
     },
 
-    ends_with: function (str, what) {
+    ends_with: function(str, what) {
         return str.substr(str.length - what.length, what.length) === what;
     },
 
-    run_tests: function (sanity_test) {
+    run_tests: function(sanity_test) {
         var t = sanity_test || new SanityTest();
 
         return t;
