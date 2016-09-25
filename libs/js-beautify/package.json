@@ -1,8 +1,9 @@
 {
   "name": "js-beautify",
-  "version": "1.6.4",
+  "version": "1.5.1",
   "description": "jsbeautifier.org for node",
   "main": "js/index.js",
+  "preferGlobal": true,
   "bin": {
     "css-beautify": "./js/bin/css-beautify.js",
     "html-beautify": "./js/bin/html-beautify.js",
@@ -12,12 +13,15 @@
     "lib": "js/lib",
     "test": "js/test"
   },
-  "scripts": {},
-  "bugs": "https://github.com/beautify-web/js-beautify/issues",
+  "scripts": {
+    "test": "./js/test/shell-smoke-test.sh && node ./js/test/node-beautify-tests.js && node ./js/test/amd-beautify-tests.js",
+    "update-codemirror": "npm install codemirror && rm -rf ./web/third-party/codemirror/* && cp ./node_modules/codemirror/LICENSE ./web/third-party/codemirror/ && cp ./node_modules/codemirror/README.md ./web/third-party/codemirror/ && cp -r ./node_modules/codemirror/lib ./web/third-party/codemirror/ && mkdir -p ./web/third-party/codemirror/mode && cp -r ./node_modules/codemirror/mode/javascript ./web/third-party/codemirror/mode/ && git add -Av ./web/third-party/codemirror"
+  },
+  "bugs": "https://github.com/einars/js-beautify/issues",
   "homepage": "http://jsbeautifier.org/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/beautify-web/js-beautify.git"
+    "url": "git://github.com/einars/js-beautify.git"
   },
   "keywords": [
     "beautify",
@@ -39,15 +43,12 @@
   "license": "MIT",
   "dependencies": {
     "config-chain": "~1.1.5",
-    "editorconfig": "^0.13.2",
-    "mkdirp": "~0.5.0",
-    "nopt": "~3.0.1"
+    "mkdirp": "0.3.5",
+    "nopt": "~2.2.0"
   },
   "devDependencies": {
-    "jshint": "~2.9.1",
+    "jshint": "2.4.4",
     "node-static": "~0.7.1",
-    "mustache": "~2.2.1",
-    "requirejs": "2.1.x",
-    "benchmark": "2.1.0"
+    "requirejs": "2.1.x"
   }
 }
