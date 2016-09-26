@@ -7,6 +7,7 @@ import re
 import string
 import errno
 import copy
+from . import six
 from jsbeautifier.__version__ import __version__
 
 #
@@ -159,7 +160,7 @@ class Acorn:
     def __init__(self):
         # This is not pretty, but given how we did the version import
         # it is the only way to do this without having setup.py fail on a missing six dependency.
-        self.six = __import__("six")
+        self.six = six
         # This section of code was translated to python from acorn (javascript).
         #
         # Acorn was written by Marijn Haverbeke and released under an MIT
