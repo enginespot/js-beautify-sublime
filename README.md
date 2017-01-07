@@ -1,3 +1,9 @@
+# Project Deprecated
+Project Deprecated , since that I am busy with another project and most of the time I use atom, the project deprecated , andbody who use js beautify can use https://github.com/jdc0589/JsFormat 
+
+Thanks.
+
+
 # JS Beautify Wrapper for Sublime Text
 
 ##Installation
