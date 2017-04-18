@@ -6,12 +6,12 @@ Thanks.
 
 # JS Beautify Wrapper for Sublime Text
 
-##Installation
+## Installation
 
 1.Just 'Javascript Beautify' from Sublime's package manager.
 
 
-##Comment
+## Comment
 1.current support embed js within jade file
 
 
